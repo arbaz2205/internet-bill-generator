@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internet Service Bill Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Internet Service Bill Generator</h2>
+
+<div class="form">
+  <input id="invoiceNo" placeholder="Invoice No">
+  <input id="date" type="date">
+  <input id="customer" placeholder="Customer Name">
+  <input id="period" placeholder="Billing Period (e.g. June to August 2025)">
+  <input id="amount" placeholder="Amount (₹)">
+  <button onclick="generateBill()">Generate Bill</button>
+</div>
+
+<hr>
+
+<div id="bill" class="bill">
+  <h3>SKYNET INTERNET SERVICES</h3>
+  <p><strong>Invoice No:</strong> <span id="bInvoice"></span></p>
+  <p><strong>Date:</strong> <span id="bDate"></span></p>
+  <p><strong>Customer:</strong> <span id="bCustomer"></span></p>
+
+  <table>
+    <tr>
+      <th>Particulars</th>
+      <th>Amount (₹)</th>
+    </tr>
+    <tr>
+      <td id="bPeriod"></td>
+      <td id="bAmount"></td>
+    </tr>
+  </table>
+
+  <p><strong>Total:</strong> ₹ <span id="bAmountTotal"></span></p>
+
+  <p class="note">
+    NOTE: Computer generated bill. Signature not required.<br>
+    GST not applicable.
+  </p>
+
+  <button onclick="window.print()">Print / Save PDF</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
