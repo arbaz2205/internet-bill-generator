@@ -1,6 +1,42 @@
-<div class="bill">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internet Bill Generator</title>
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Company & Invoice Header -->
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<h2>Internet Bill Generator</h2>
+
+<!-- INPUT FORM -->
+<div class="form">
+  <input id="billDate" type="date">
+  <input id="customerName" placeholder="Customer Name">
+  <textarea id="customerAddress" placeholder="Customer Address"></textarea>
+
+  <h3>Bill Items</h3>
+  <table id="itemsInput">
+    <tr>
+      <th>Description</th>
+      <th>Amount (₹)</th>
+      <th>Action</th>
+    </tr>
+  </table>
+
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="generateBill()">Generate Bill</button>
+</div>
+
+<hr>
+
+<!-- BILL -->
+<div class="bill" id="bill">
   <table class="header-table">
     <tr>
       <td>
@@ -11,69 +47,55 @@
         Contact: 7718962252
       </td>
       <td>
-        <strong>Invoice No:</strong> SKY/1262<br>
-        <strong>Dated:</strong> 30th November 2025<br>
-        <strong>Mode/Term of Payment:</strong> Cash
+        <strong>Invoice No:</strong> <span id="bInvoice"></span><br>
+        <strong>Dated:</strong> <span id="bDate"></span>
       </td>
     </tr>
   </table>
 
-  <!-- Customer Details -->
   <table class="details-table">
     <tr>
       <td>
         <strong>Customer Details</strong><br>
-        Vaishnavi Katkar<br>
-        7A/217 Shree Saibaba SRA CHS,<br>
-        Golibar Road, Santacruz (East),<br>
-        Mumbai – 400055
-      </td>
-      <td>
-        <strong>Supplier’s Ref:</strong> —<br>
-        <strong>Other Reference(s):</strong> —
+        <span id="bCustomerName"></span><br>
+        <span id="bCustomerAddress"></span>
       </td>
     </tr>
   </table>
 
-  <!-- Item Table -->
-  <table class="item-table">
+  <table class="item-table" id="billItems">
     <tr>
       <th>SR. No.</th>
       <th>Particulars</th>
       <th>Amount (₹)</th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Internet Service charges for the months of September to November 2025.</td>
-      <td>3000</td>
-    </tr>
-    <tr>
-      <td colspan="2" style="text-align:right;"><strong>Total Amount</strong></td>
-      <td><strong>3000</strong></td>
-    </tr>
   </table>
 
-  <!-- Amount in Words & Notes -->
   <div class="footer">
     <p>
       <strong>Amount Chargeable (in words):</strong><br>
-      Six Thousand Only
-      <span style="float:right;"><strong>E. & O.E</strong></span>
+      <span id="amountWords"></span>
+      <span class="eoe">E. & O.E</span>
     </p>
 
     <p><strong>Company's PAN:</strong> AASPY2896C</p>
 
     <p class="note">
       NOTE: Computer Generated Bill. Signature Not Required.<br>
-      This is to inform you that we are not applicable for GST, therefore we will not charge GST in our bills.
+      GST not applicable.
     </p>
 
     <table class="signature-table">
       <tr>
         <td>Customer’s Seal and Signature</td>
-        <td style="text-align:right;">for <strong>Skynet</strong></td>
+        <td class="right">for <strong>Skynet</strong></td>
       </tr>
     </table>
-  </div>
 
+    <button onclick="downloadPDF()">Download PDF</button>
+  </div>
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>
