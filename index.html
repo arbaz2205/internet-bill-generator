@@ -1,52 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Internet Service Bill Generator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="bill">
 
-<h2>Internet Service Bill Generator</h2>
-
-<div class="form">
-  <input id="invoiceNo" placeholder="Invoice No">
-  <input id="date" type="date">
-  <input id="customer" placeholder="Customer Name">
-  <input id="period" placeholder="Billing Period (e.g. June to August 2025)">
-  <input id="amount" placeholder="Amount (₹)">
-  <button onclick="generateBill()">Generate Bill</button>
-</div>
-
-<hr>
-
-<div id="bill" class="bill">
-  <h3>SKYNET INTERNET SERVICES</h3>
-  <p><strong>Invoice No:</strong> <span id="bInvoice"></span></p>
-  <p><strong>Date:</strong> <span id="bDate"></span></p>
-  <p><strong>Customer:</strong> <span id="bCustomer"></span></p>
-
-  <table>
+  <!-- Company & Invoice Header -->
+  <table class="header-table">
     <tr>
+      <td>
+        <strong>Skynet</strong><br>
+        Shop No 01, Aakash Ganga Soc<br>
+        Datta Mandir Road, Santacruz (East)<br>
+        Mumbai – 400055<br>
+        Contact: 7718962252
+      </td>
+      <td>
+        <strong>Invoice No:</strong> SKY/1262<br>
+        <strong>Dated:</strong> 30th November 2025<br>
+        <strong>Mode/Term of Payment:</strong> Cash
+      </td>
+    </tr>
+  </table>
+
+  <!-- Customer Details -->
+  <table class="details-table">
+    <tr>
+      <td>
+        <strong>Customer Details</strong><br>
+        Vaishnavi Katkar<br>
+        7A/217 Shree Saibaba SRA CHS,<br>
+        Golibar Road, Santacruz (East),<br>
+        Mumbai – 400055
+      </td>
+      <td>
+        <strong>Supplier’s Ref:</strong> —<br>
+        <strong>Other Reference(s):</strong> —
+      </td>
+    </tr>
+  </table>
+
+  <!-- Item Table -->
+  <table class="item-table">
+    <tr>
+      <th>SR. No.</th>
       <th>Particulars</th>
       <th>Amount (₹)</th>
     </tr>
     <tr>
-      <td id="bPeriod"></td>
-      <td id="bAmount"></td>
+      <td>1</td>
+      <td>Internet Service charges for the months of September to November 2025.</td>
+      <td>3000</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:right;"><strong>Total Amount</strong></td>
+      <td><strong>3000</strong></td>
     </tr>
   </table>
 
-  <p><strong>Total:</strong> ₹ <span id="bAmountTotal"></span></p>
+  <!-- Amount in Words & Notes -->
+  <div class="footer">
+    <p>
+      <strong>Amount Chargeable (in words):</strong><br>
+      Six Thousand Only
+      <span style="float:right;"><strong>E. & O.E</strong></span>
+    </p>
 
-  <p class="note">
-    NOTE: Computer generated bill. Signature not required.<br>
-    GST not applicable.
-  </p>
+    <p><strong>Company's PAN:</strong> AASPY2896C</p>
 
-  <button onclick="window.print()">Print / Save PDF</button>
+    <p class="note">
+      NOTE: Computer Generated Bill. Signature Not Required.<br>
+      This is to inform you that we are not applicable for GST, therefore we will not charge GST in our bills.
+    </p>
+
+    <table class="signature-table">
+      <tr>
+        <td>Customer’s Seal and Signature</td>
+        <td style="text-align:right;">for <strong>Skynet</strong></td>
+      </tr>
+    </table>
+  </div>
+
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>
