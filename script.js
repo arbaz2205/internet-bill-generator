@@ -1,5 +1,5 @@
 let invoiceCounter = localStorage.getItem("invoiceCounter") || 1000;
-
+ 
 function addItem() {
   const table = document.getElementById("itemsInput");
   const row = table.insertRow();
