@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Internet Bill Generator</title>
   <link rel="stylesheet" href="style.css">
 
@@ -11,90 +12,119 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
+<div class="container">
+  <h1>Internet Bill Generator</h1>
 
-<h2>Internet Bill Generator</h2>
+  <!-- INPUT FORM -->
+  <div class="form-section">
+    <h2>Enter Bill Details</h2>
+    <form class="form">
+      <div class="form-group">
+        <label for="billDate">Bill Date:</label>
+        <input id="billDate" type="date">
+      </div>
+      <div class="form-group">
+        <label for="customerName">Customer Name:</label>
+        <input id="customerName" placeholder="Customer Name">
+      </div>
+      <div class="form-group">
+        <label for="customerAddress">Customer Address:</label>
+        <textarea id="customerAddress" placeholder="Customer Address"></textarea>
+      </div>
 
-<!-- INPUT FORM -->
-<div class="form">
-  <input id="billDate" type="date">
-  <input id="customerName" placeholder="Customer Name">
-  <textarea id="customerAddress" placeholder="Customer Address"></textarea>
+      <h3>Bill Items</h3>
+      <table id="itemsInput">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount (₹)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
-  <h3>Bill Items</h3>
-  <table id="itemsInput">
-    <tr>
-      <th>Description</th>
-      <th>Amount (₹)</th>
-      <th>Action</th>
-    </tr>
-  </table>
+      <div class="button-group">
+        <button type="button" onclick="addItem()">Add Item</button>
+        <button type="button" onclick="generateBill()">Generate Bill</button>
+      </div>
+    </form>
+  </div>
 
-  <button onclick="addItem()">Add Item</button>
-  <button onclick="generateBill()">Generate Bill</button>
-</div>
+  <hr>
 
-<hr>
+  <!-- BILL -->
+  <div class="bill-section">
+    <div class="bill" id="bill">
+      <table class="header-table">
+        <tr>
+          <td>
+            <strong>Skynet</strong><br>
+            Shop No 01, Aakash Ganga Soc<br>
+            Datta Mandir Road, Santacruz (East)<br>
+            Mumbai – 400055<br>
+            Contact: 7718962252
+          </td>
+          <td>
+            <strong>Invoice No:</strong> <span id="bInvoice"></span><br>
+            <strong>Dated:</strong> <span id="bDate"></span>
+          </td>
+        </tr>
+      </table>
 
-<!-- BILL -->
-<div class="bill" id="bill">
-  <table class="header-table">
-    <tr>
-      <td>
-        <strong>Skynet</strong><br>
-        Shop No 01, Aakash Ganga Soc<br>
-        Datta Mandir Road, Santacruz (East)<br>
-        Mumbai – 400055<br>
-        Contact: 7718962252
-      </td>
-      <td>
-        <strong>Invoice No:</strong> <span id="bInvoice"></span><br>
-        <strong>Dated:</strong> <span id="bDate"></span>
-      </td>
-    </tr>
-  </table>
+      <table class="details-table">
+        <tr>
+          <td>
+            <strong>Customer Details</strong><br>
+            <span id="bCustomerName"></span><br>
+            <span id="bCustomerAddress"></span>
+          </td>
+        </tr>
+      </table>
 
-  <table class="details-table">
-    <tr>
-      <td>
-        <strong>Customer Details</strong><br>
-        <span id="bCustomerName"></span><br>
-        <span id="bCustomerAddress"></span>
-      </td>
-    </tr>
-  </table>
+      <table class="item-table" id="billItems">
+        <thead>
+          <tr>
+            <th>SR. No.</th>
+            <th>Particulars</th>
+            <th>Amount (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
-  <table class="item-table" id="billItems">
-    <tr>
-      <th>SR. No.</th>
-      <th>Particulars</th>
-      <th>Amount (₹)</th>
-    </tr>
-  </table>
+      <div class="footer">
+        <p>
+          <strong>Amount Chargeable (in words):</strong><br>
+          <span id="amountWords"></span>
+          <span class="eoe">E. & O.E</span>
+        </p>
 
-  <div class="footer">
-    <p>
-      <strong>Amount Chargeable (in words):</strong><br>
-      <span id="amountWords"></span>
-      <span class="eoe">E. & O.E</span>
-    </p>
+        <p><strong>Company's PAN:</strong> AASPY2896C</p>
 
-    <p><strong>Company's PAN:</strong> AASPY2896C</p>
+        <p class="note">
+          NOTE: Computer Generated Bill. Signature Not Required.<br>
+          GST not applicable.
+        </p>
 
-    <p class="note">
-      NOTE: Computer Generated Bill. Signature Not Required.<br>
-      GST not applicable.
-    </p>
+        <table class="signature-table">
+          <tr>
+            <td>Customer’s Seal and Signature</td>
+            <td class="right">for <strong>Skynet</strong></td>
+          </tr>
+        </table>
 
-    <table class="signature-table">
-      <tr>
-        <td>Customer’s Seal and Signature</td>
-        <td class="right">for <strong>Skynet</strong></td>
-      </tr>
-    </table>
-
-    <button onclick="downloadPDF()">Download PDF</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+      </div>
+    </div>
   </div>
 </div>
+
+<footer>
+  <p>&copy; 2026 Developed by Arbaz Patel. Contact: <a href="mailto:arbazkhan220501@gmail.com">arbazkhan220501@gmail.com</a>. All rights reserved.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
